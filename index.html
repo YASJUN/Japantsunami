@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<!-- <script src="js/tsunami.js" type="text/javascript" charset="utf-8"></script> -->
+		<script src="test.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			body{
+				/* width: 1920px;
+				height: 1080px; */
+				background-image: url(img/background.png);
+				background-repeat: no-repeat;
+				padding: 0;
+				margin: 0;
+			}
+			img{
+				margin: 0;
+				padding: 0;
+			}
+			/* *{
+				font-size: 30px;
+			} */
+			.line{
+				position: absolute;
+			}
+			select,input{
+				margin: 1080px 0 0 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="frist" style="display: none;"></div>
+
+					  <br>
+					
+			
+	</body>
+	<!-- <script type="text/javascript">
+		function add(){
+			loc = document.getElementById("location").value
+			tsuyoi = document.getElementById("warn").value
+			txt = loc+tsuyoi
+			// document.getElementById("frist").innerHTML+=txt+".jpg"
+			document.getElementById("frist").insertAdjacentHTML("afterend",'<div class="line"><img src="img/'+txt+'.png"></div>')
+			alert(loc+tsuyoi)
+			
+		}
+	</script> -->
+	<!-- <script type="text/javascript">
+		function add(){
+			loc = document.getElementsByName("location")
+			// 获取location name值
+			tsuyoi = document.getElementsByName("warn")
+			var onelength = loc.length
+			// 获取location长度
+			var str = new Array(65);
+			// 定义数组长度为最长长度
+			for(var i =0;i<onelength;i++){
+				if(loc[i].checked == true){
+					str[i] = loc[i].value
+					//判断是否有值并赋值
+				}
+			}
+			
+			for(var j in str){
+				document.getElementById("frist").insertAdjacentHTML("afterend",'<div class="line"><img src="img/'+[j]+1+'2.png"></div>')
+			}
+			// document.getElementById("frist").insertAdjacentHTML("afterend",'<div class="line"><img src="img/'+txt+'.png"></div>')
+			// alert(loc+tsuyoi)
+			
+		}
+	</script> -->
+	<!-- <script type="text/javascript">
+		for (var j in str) {
+				document.getElementById("frist").insertAdjacentHTML("afterend", '<div class="line"><img src="img/tsunami/'+str[j]+'.png"></div>')
+		}
+	</script> -->
+	<script type="text/javascript">
+		var showi;
+		var hiddeni;
+		var date1,date2;
+		var interval = null
+		function hiddenimg(){
+			
+			// var interval = null;//计时器
+			var i = 0;
+			function start(){//启动计时器函数
+			    if(interval!=null){//判断计时器是否为空
+			        clearInterval(interval);
+			        interval=null;
+			    }
+			    interval = setInterval(showi,3000);//启动计时器，调用hiddeni函数，
+				}
+			// alarm()
+			start()
+			
+			clearInterval(showi)
+			hiddeni = setInterval(function(){
+				date1 = new Date().getTime();  
+				console.log("hiddeni is running!")
+				console.log(date1-date2)
+				var img = document.getElementsByTagName("img")
+				for(var i =0;i<img.length;i++){
+					img[i].style.display="none"
+				}
+				showimg()
+			},3000)
+			// 显示时间
+		}
+		
+		function showimg(){
+			
+			// var interval = null;//计时器
+			var i = 0;
+			function start(){//启动计时器函数
+			    if(interval!=null){//判断计时器是否为空
+			        clearInterval(interval);
+			        interval=null;
+			    }
+			    interval = setInterval(hiddeni,750);//启动计时器，调用hiddeni函数，
+				}
+			// alarm()
+			start()
+			
+			clearInterval(hiddeni)
+			showi = setInterval(function(){
+				date2 = new Date().getTime();  
+				console.log("showi is running!")
+				console.log(date2-date1)
+				var img = document.getElementsByTagName("img")
+				for(var i =0;i<img.length;i++){
+					img[i].style.display="inline-block"
+				}
+				hiddenimg()
+			},750)
+			// 隐藏时间
+		}
+		hiddenimg()
+	</script>
+</html>
